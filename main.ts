@@ -17,9 +17,6 @@ function うしろにすすむ () {
     pins.digitalWritePin(DigitalPin.P15, 1)
     pins.digitalWritePin(DigitalPin.P16, 0)
 }
-input.onButtonPressed(Button.A, function () {
-    右手ふる(4)
-})
 function 右手ふる (回数: number) {
     for (let index = 0; index < 回数; index++) {
         右手(80)
