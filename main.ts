@@ -17,6 +17,9 @@ function うしろにすすむ () {
     pins.digitalWritePin(DigitalPin.P15, 1)
     pins.digitalWritePin(DigitalPin.P16, 0)
 }
+input.onButtonPressed(Button.A, function () {
+    右手ふる(4)
+})
 function 右手ふる (回数: number) {
     for (let index = 0; index < 回数; index++) {
         右手(80)
@@ -33,7 +36,7 @@ function 止まる () {
 }
 // -90 - +90
 function 左手 (角度: number) {
-    servos.P2.setAngle(30 + 角度)
+    servos.P2.setAngle(30 / 角度)
 }
 function 左手ふる (回数: number) {
     for (let index = 0; index < 回数; index++) {
@@ -54,3 +57,11 @@ function 左にまわる (時間: number) {
 function 右手 (角度: number) {
     servos.P1.setAngle(60 - 角度)
 }
+// 値の単位はcm
+basic.forever(function () {
+    serial.writeValue("distance", sonar.ping(
+    DigitalPin.P12,
+    DigitalPin.P8,
+    PingUnit.MicroSeconds
+    ) / 58)
+})
