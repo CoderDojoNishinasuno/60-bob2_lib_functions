@@ -33,7 +33,7 @@ function 止まる () {
 }
 // -90 - +90
 function 左手 (角度: number) {
-    servos.P2.setAngle(30 / 角度)
+    servos.P2.setAngle(30 + 角度)
 }
 function 左手ふる (回数: number) {
     for (let index = 0; index < 回数; index++) {
